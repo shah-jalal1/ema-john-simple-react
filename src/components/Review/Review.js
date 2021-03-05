@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import fakeData from '../../fakeData';
-import { getDatabaseCart } from '../../utilities/databaseManager';
+import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import ReviewItem from '../ReviewItem/ReviewItem';
 
 const Review = () => {
     const [cart, setcart] = useState([]);
 
     const removeProduct = (productKey) => {
-        console.log('remove clicked');
         const newCart = cart.filter(pd => pd.key !== productKey);
         setcart(newCart);
+        removeFromDatabaseCart(productKey)
     }
 
     useEffect(() => {
