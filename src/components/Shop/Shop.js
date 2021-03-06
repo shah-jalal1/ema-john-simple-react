@@ -66,6 +66,7 @@ const Shop = () => {
                  </Cart>
                 
             </div>
+            Router
         </div>
     );
 };
