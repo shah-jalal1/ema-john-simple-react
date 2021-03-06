@@ -58,11 +58,12 @@ const Shop = () => {
 
             </div>
             <div className="cart-container">
-            <   Cart cart={cart}></Cart>
-
-                <Link to="/review">
-                <button className="main-button">Review Order</button>
-                 </Link>
+                <Cart cart={cart}>
+                    {/* Children */}
+                    <Link to="/review">
+                        <button className="main-button">Review Order</button>
+                    </Link>
+                 </Cart>
                 
             </div>
         </div>
