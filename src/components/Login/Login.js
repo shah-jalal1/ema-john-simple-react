@@ -2,7 +2,8 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { userContext } from "../../App";
 
 firebase.initializeApp(firebaseConfig)
 
@@ -16,6 +17,8 @@ function Login() {
     password: '',
     photoURL: ''
   });
+
+  const [loggedInUser, setLoggedInUser] = useContext(userContext);
 
   const provider = new firebase.auth.GoogleAuthProvider();
   const fbProvider = new firebase.auth.FacebookAuthProvider();
@@ -80,13 +83,11 @@ function Login() {
   }
 
   const handleSubmit = (e) => {
-    // console.log(user.email, user.password);
+    
     if (newUser && user.email && user.password) {
       // console.log("submitting");
       firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
         .then((res) => {
-          // Signed in 
-          // var user = res.user;
           const newUserInfo = { ...user };
           newUserInfo.error = '';
           newUserInfo.success = true;
@@ -116,6 +117,7 @@ function Login() {
           newUserInfo.error = '';
           newUserInfo.success = true;
           setUser(newUserInfo);
+          setLoggedInUser(newUserInfo)
           console.log('sign in user info', res.user);
         })
         .catch((error) => {
