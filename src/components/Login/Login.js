@@ -2,7 +2,7 @@
 import { useContext, useState } from 'react';
 import { userContext } from "../../App";
 import { useHistory, useLocation } from "react-router";
-import { handleFbSignIn, handleGoogleSignIn, handleSignOut, initialieLoginFrameWork } from './LoginManager';
+import { CreateWithEmailAndPassword, handleFbSignIn, handleGoogleSignIn, handleSignOut, initialieLoginFrameWork, SignInWithEmailAndPassword } from './LoginManager';
 
 
 function Login() {
@@ -75,11 +75,22 @@ function Login() {
     
     if (newUser && user.email && user.password) {
       // console.log("submitting");
+      CreateWithEmailAndPassword(user.name, user.email, user.pas)
+      .then(res => {
+        setUser(res);
+        setLoggedInUser(res);
+        history.replace(from);
+      })
       
     }
 
     if (!newUser && user.email && user.password) {
-      
+      SignInWithEmailAndPassword(user.email, user.password)
+      .then(res => {
+        setUser(res);
+        setLoggedInUser(res);
+        history.replace(from);
+      })
     }
 
     e.preventDefault(); // For no reload 
