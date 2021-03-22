@@ -1,5 +1,5 @@
-.ship-form {
-    margin: 30px 100px;
+.ship-form{
+    margin:30px 100px;
 }
 .ship-form input {
     display: block;
@@ -9,6 +9,6 @@
     border-radius: 5px;
     width: 300px;
 }
-.error {
+.error{
     color: red;
 }
