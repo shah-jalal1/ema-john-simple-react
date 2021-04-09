@@ -6,11 +6,11 @@ import SplitCardForm from './SplitCardForm';
 
 const stripePromise = loadStripe('pk_test_51IeCaSIuW9m5uNpESvNhVviCzvJtAb6fiF8TKxiJQL8GBjusqbROxYGdPMyq6tXJlwyAv5tIOzsxYjOwP7JzwMEP00eSrvx0sN');
 
-const ProcessPayment = () => {
+const ProcessPayment = ({handlePayment}) => {
     return (
         <Elements stripe={stripePromise}>
-           {/* <SimpleCardFrom></SimpleCardFrom> */}
-           <SplitCardForm></SplitCardForm>
+           <SimpleCardFrom handlePayment={handlePayment}></SimpleCardFrom>
+           {/* <SplitCardForm></SplitCardForm> */}
         </Elements>
     );
 };
