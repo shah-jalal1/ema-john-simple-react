@@ -10,12 +10,17 @@ const Shop = () => {
 
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
-        fetch('https://powerful-sierra-54029.herokuapp.com/products')
+        fetch('https://powerful-sierra-54029.herokuapp.com/products?search='+search)
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [])
+    }, [search])
+
+    const handleSearch = event => {
+        setSearch(event.target.value);
+    }
 
     document.title = "Shop More";
 
@@ -55,6 +60,7 @@ const Shop = () => {
     return (
         <div className="twin-container">
             <div className="product-container">
+                <input type="text" onBlur={handleSearch} className="product-search form-control w-25 m-3" placeholder="Search Product"/>
 
                 {
                     products.map(pd => <Product
