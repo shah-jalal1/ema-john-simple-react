@@ -63,7 +63,7 @@ const Shipment = () => {
       </div>
 
 
-      <div style={{display: shippingData ? 'block' : 'none'}} className="col-md-6">
+      <div style={{display: shippingData ? 'block' : 'none'}} className="col-md-6 ml-5">
         <h2>Please Pay For me</h2>
         <ProcessPayment handlePayment={handlePaymentSuccess}></ProcessPayment>
       </div>
